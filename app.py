@@ -24,7 +24,7 @@ def calculate_RSI(ticker):
   up = delta.clip(lower=0)
   down = -1 * delta.clip(upper=0)
   ema_up = up.ewm(com=14-1, adjust=False).mean()
-  ema_down = down.ewm(com=14-1, adjust=False).mean
+  ema_down = down.ewm(com=14-1, adjust=False).mean()
   rs = ema_up / ema_down
   return str(100 - (100 / (1+rs)).iloc[-1])
 
@@ -57,13 +57,13 @@ def plot_stock_price(ticker):
 functions = [
    {
             'name' : 'get_stock_price' ,
-             'discription' : 'Gets the latest stock price given the ticker symbol of a company.' ,
+             'description' : 'Gets the latest stock price given the ticker symbol of a company.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                  },
                  'required' : ['ticker'],
@@ -71,18 +71,18 @@ functions = [
              },
         {
             'name': 'calculate_SMA' ,
-             'discription' : 'Calculate the simple moving average for a given stock ticker and a window.' ,
+             'description' : 'Calculate the simple moving average for a given stock ticker and a window.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                      'window' :
                      {
                          'type': 'integer',
-                         'discription': 'The timeframe to consider when calculating the SMA'
+                         'description': 'The timeframe to consider when calculating the SMA'
                      }
                  },
                  'required' : ['ticker', 'window'],
@@ -90,18 +90,18 @@ functions = [
              },
     {
             'name': 'calculate_EMA' ,
-             'discription' : 'Calculate the exponential moving average for a given stock ticker and a window.' ,
+             'description' : 'Calculate the exponential moving average for a given stock ticker and a window.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                      'window' :
                      {
                          'type': 'integer',
-                         'discription': 'The timeframe to consider when calculating the EMA'
+                         'description': 'The timeframe to consider when calculating the EMA'
                      }
                  },
                  'required' : ['ticker', 'window'],
@@ -109,13 +109,13 @@ functions = [
              },
     {
             'name': 'calculate_RSI' ,
-             'discription' : 'Calculate the RSI for a given stock ticker.' ,
+             'description' : 'Calculate the RSI for a given stock ticker.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                      },
                  },
@@ -123,13 +123,13 @@ functions = [
              },
     {
             'name': 'calculate_MACD' ,
-             'discription' : 'Calculate the MACD for a given stock ticker.' ,
+             'description' : 'Calculate the MACD for a given stock ticker.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                  },
                  'required' : ['ticker'],
@@ -137,13 +137,13 @@ functions = [
              },
     {
             'name': 'plot_stock_price' ,
-             'discription' : 'Plot the stock price for the last year given the ticker symbol of a company.' ,
+             'description' : 'Plot the stock price for the last year given the ticker symbol of a company.' ,
              'parameters': {
                  'type' : 'object' ,
                  'properties' :{
                      'ticker' :{
                          'type' : 'string' ,
-                         'discription' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
+                         'description' : 'The stock ticker symbol for a company (for example AAPL for Apple). Note : FB is renamed to META '
                                               },
                  },
                  'required' : ['ticker'],
@@ -157,7 +157,7 @@ available_functions = {
     'calculate_SMA' : calculate_SMA,
     'calculate_EMA' : calculate_EMA,
     'calculate_RSI' : calculate_RSI,
-    'caluculate_MACD' : calculate_MACD,
+    'calculate_MACD' : calculate_MACD,
     'plot_stock_price' : plot_stock_price
 }
 
