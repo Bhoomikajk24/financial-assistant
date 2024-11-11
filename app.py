@@ -19,7 +19,7 @@ def calculate_EMA(ticker, window):
   return str(data.ewm(span=window,adjust=False).mean().iloc[-1])
 
 def calculate_RSI(ticker):
-  delta = yf.Ticker(ticker).history(period='1y').Close
+  data = yf.Ticker(ticker).history(period='1y').Close
   delta = data.diff()
   up = delta.clip(lower=0)
   down = -1 * delta.clip(upper=0)
@@ -174,8 +174,8 @@ if user_input:
   try:
     st.session_state['messages'].append({'role' : 'user', 'content' : f'{user_input}'})
 
-    response = openai.Chat.create(
-        model = 'gpt-4-0613',
+    response =openai.ChatCompletion.create(
+        model = 'gpt-3.5-turbo',
         messages = st.session_state['messages'],
         functions=functions,
         function_call = 'auto'
@@ -205,8 +205,8 @@ if user_input:
             'content' : function_response
           }
        )
-        second_response = openai.Chat.create(
-        model = 'gpt-4-0613',
+        second_response = openai.ChatCompletion.create(
+        model = 'gpt-3.5-turbo',
         messages = st.session_state['messages']
        )
         st.text(second_response['choices'][0]['message']['content'])
@@ -216,4 +216,4 @@ if user_input:
        st.session_state['messages'].append({'role': 'assistant', 'content': response_message['content']})
 
   except Exception as e:
-    st.text(f'Error: {e}')
+    raise e
