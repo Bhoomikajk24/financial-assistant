@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import yfinance as yf
 
-openai.api_key = open('API_KEY.txt', 'r').read()
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 def get_stock_price(ticker):
   return str(yf.Ticker(ticker).history(period='1y').iloc[-1].Close)
