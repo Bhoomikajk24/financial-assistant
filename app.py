@@ -3,6 +3,7 @@ import openai as openai
 import pandas as pd
 import matplotlib.pyplot as plt
 import yfinance as yf
+import streamlit as st
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
