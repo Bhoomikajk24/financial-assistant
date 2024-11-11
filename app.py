@@ -18,13 +18,13 @@ def calculate_EMA(ticker, window):
   data = yf.Ticker(ticker).history(period='1y').Close
   return str(data.ewm(span=window,adjust=False).mean().iloc[-1])
 
-def calculate_RSI(tickker):
+def calculate_RSI(ticker):
   delta = yf.Ticker(ticker).history(period='1y').Close
   delta = data.diff()
   up = delta.clip(lower=0)
-  dowm = -1 * delta.clip(upper=0)
+  down = -1 * delta.clip(upper=0)
   ema_up = up.ewm(com=14-1, adjust=False).mean()
-  ema_down = dwon.ewm(com=14-1, adjust=False).mean
+  ema_down = down.ewm(com=14-1, adjust=False).mean
   rs = ema_up / ema_down
   return str(100 - (100 / (1+rs)).iloc[-1])
 
@@ -34,10 +34,10 @@ def calculate_MACD(ticker):
   long_EMA = data.ewm(span=26, adjust=False).mean()
 
   MACD = short_EMA - long_EMA
-  signal = MCAD.ewm(span=9, adjust=False).mean()
-  MCAD_histogram = MCAD - signal
+  signal = MACD.ewm(span=9, adjust=False).mean()
+  MACD_histogram = MACD - signal
 
-  return f'{MACD[-1]}, {signal[-1]}, {MCAD_histogram[-1]}'
+  return f'{MACD[-1]}, {signal[-1]}, {MACD_histogram[-1]}'
 
 def plot_stock_price(ticker):
   data = yf.Ticker(ticker).history(period='1y')
@@ -47,7 +47,11 @@ def plot_stock_price(ticker):
   plt.xlabel('Date')
   plt.xlabel('Stock Price ($)')
   plt.grid(True)
-  plt.savefig('stock.png')
+  from io import BytesIO
+  img = BytesIO()
+  plt.savefig(img, format='png')
+  img.seek(0)
+  st.image(img)
   plt.close()
 
 functions = [
