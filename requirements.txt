@@ -1,4 +1,4 @@
-openai==0.28.0
+openai==1.0.0
 pandas==2.2.2
 pandas-datareader==0.10.0
 pandas-gbq==0.24.0
