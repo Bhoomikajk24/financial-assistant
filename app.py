@@ -170,7 +170,7 @@ if user_input:
   try:
     st.session_state['messages'].append({'role' : 'user', 'content' : f'{user_input}'})
 
-    response = openai.ChatCompletion.create(
+    response = openai.Chat.create(
         model = 'gpt-4-0613',
         messages = st.session_state['messages'],
         functions=functions,
@@ -201,7 +201,7 @@ if user_input:
             'content' : function_response
           }
        )
-        second_response = openai.ChatCompletion.create(
+        second_response = openai.Chat.create(
         model = 'gpt-4-0613',
         messages = st.session_state['messages']
        )
