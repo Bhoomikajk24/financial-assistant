@@ -46,7 +46,7 @@ def get_company_name_from_input(input):
     return input  # Assume the input is a ticker symbol if not found
 
 # Alpha Vantage API key
-API_KEY = "YOUR_ALPHA_VANTAGE_API_KEY"
+API_KEY = "K0AWNF84KI0CAX1L"
 
 # Function to get stock price data
 def get_stock_price(ticker):
