@@ -114,8 +114,8 @@ if st.button("Get Stock Price"):
     if stock_data:
         st.write(f"The current price of **{company_name}** ({stock_data['ticker']}) is **${stock_data['price']:.2f}**")
     else:
-        st.error("Could not retrieve stock price data. Please try again.")
-
+        st.error(f"Data retrieval issue: {e}")
+        
 if st.button("Get Technical Indicators"):
     company_name = get_company_name_from_input(user_input)
     indicators = calculate_technical_indicators(company_name)
@@ -126,4 +126,4 @@ if st.button("Get Technical Indicators"):
         st.write(f"The current SMA for **{company_name}** is **{indicators['SMA']:.2f}**")
         st.write(f"The current MACD for **{company_name}** is **{indicators['MACD']:.2f}**")
     else:
-        st.error("Could not retrieve technical indicator data. Please try again.")
+        st.error(f"Data retrieval issue: {e}")
