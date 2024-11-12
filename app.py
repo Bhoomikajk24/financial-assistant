@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
 
-openai.api_key = open('API_KEY', 'r').read()
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 def getStockPrice(ticker):
     return str(yf.Ticker(ticker).history(period='1y').iloc[-1].Close)
@@ -176,7 +176,7 @@ if user_input:
         st.session_state['messages'].append({'role': 'user', 'content': f'{user_input}'})
 
         response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo-0613',
+            model='gpt-4o',
             messages=st.session_state['messages'],
             functions=functions,
             function_call='auto'
@@ -206,7 +206,7 @@ if user_input:
                     }
                 )
                 second_response = openai.ChatCompletion.create(
-                    model='gpt-3.5-turbo-0613',
+                    model='gpt-4o',
                     messages=st.session_state['messages']
                 )
                 st.text(second_response['choices'][0]['messages']['content'])
