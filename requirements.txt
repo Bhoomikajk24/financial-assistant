@@ -1,8 +1,5 @@
-openai
-yfinance
+streamlit
+requests
 pandas
 numpy
 matplotlib
-streamlit
-pip install --upgrade openai
-openai migrate .
