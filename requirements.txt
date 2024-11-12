@@ -1,5 +1,6 @@
-openai==0.27
-streamlit>=1.25.0
-pandas
-matplotlib
+openai
 yfinance
+pandas
+numpy
+matplotlib
+streamlit
